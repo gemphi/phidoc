@@ -1,0 +1,24 @@
+/**
+ * Footer.
+ */
+
+.footer {
+  background: var(--phi-color-background-secondary);
+  border-top: 1px solid var(--phi-color-border-subtle);
+}
+
+.footer__title {
+  color: var(--phi-color-text-primary);
+  font-weight: var(--phi-font-weight-semibold);
+  font-size: var(--phi-font-size-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.footer__link-item {
+  color: var(--phi-color-text-secondary);
+}
+
+.footer__link-item:hover {
+  color: var(--phi-color-primary);
+}

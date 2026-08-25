@@ -1,0 +1,50 @@
+/**
+ * Tables.
+ */
+
+.markdown table,
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--phi-space-5) 0;
+  border-radius: var(--phi-radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--phi-color-border);
+}
+
+.markdown thead tr,
+thead tr {
+  background: var(--phi-color-background-secondary);
+  border-bottom: 1px solid var(--phi-color-border);
+}
+
+.markdown th,
+th {
+  color: var(--phi-color-text-primary);
+  font-weight: var(--phi-font-weight-semibold);
+  font-size: var(--phi-font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: var(--phi-space-3) var(--phi-space-4);
+  text-align: left;
+  border-bottom: 1px solid var(--phi-color-border);
+}
+
+.markdown tbody tr,
+tbody tr {
+  border-bottom: 1px solid var(--phi-color-border-subtle);
+  transition: background var(--phi-transition-fast);
+}
+
+.markdown tbody tr:hover,
+tbody tr:hover {
+  background: var(--phi-color-background-secondary);
+}
+
+.markdown td,
+td {
+  padding: var(--phi-space-3) var(--phi-space-4);
+  color: var(--phi-color-text-secondary);
+  font-size: var(--phi-font-size-sm);
+  border-bottom: 1px solid var(--phi-color-border-subtle);
+}

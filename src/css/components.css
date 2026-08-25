@@ -1,0 +1,58 @@
+/**
+ * UI components: tabs, admonitions, cards.
+ */
+
+.tabs {
+  border-bottom: 1px solid var(--phi-color-border);
+  background: transparent;
+  gap: var(--phi-space-1);
+  margin-bottom: var(--phi-space-5);
+}
+
+.tabs__item {
+  color: var(--phi-color-text-secondary);
+  border: none;
+  border-bottom: 2px solid transparent;
+  border-radius: var(--phi-radius-md) var(--phi-radius-md) 0 0;
+  padding: var(--phi-space-2) var(--phi-space-4);
+  font-weight: var(--phi-font-weight-medium);
+  font-size: var(--phi-font-size-sm);
+  transition: all var(--phi-transition-normal);
+  background: transparent;
+}
+
+.tabs__item:hover {
+  color: var(--phi-color-text-primary);
+  background: var(--phi-color-background-secondary);
+}
+
+.tabs__item--active {
+  color: var(--phi-color-primary);
+  border-bottom: 2px solid var(--phi-color-primary);
+  font-weight: var(--phi-font-weight-semibold);
+}
+
+.alert,
+.admonition {
+  background: var(--phi-color-background-card);
+  border: 1px solid var(--phi-color-border);
+  border-left: 3px solid var(--phi-color-primary);
+  border-radius: var(--phi-radius-lg);
+  box-shadow: var(--phi-shadow-1);
+  color: var(--phi-color-text-secondary);
+  padding: var(--phi-space-4) var(--phi-space-5);
+  margin: var(--phi-space-5) 0;
+}
+
+.card {
+  background: var(--phi-color-background-card);
+  border: 1px solid var(--phi-color-border);
+  border-radius: var(--phi-radius-xl);
+  box-shadow: var(--phi-shadow-1);
+  transition: box-shadow var(--phi-transition-normal), transform var(--phi-transition-normal);
+}
+
+.card:hover {
+  box-shadow: var(--phi-shadow-3);
+  transform: translateY(-2px);
+}

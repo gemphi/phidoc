@@ -1,0 +1,60 @@
+/**
+ * Base styles: scrollbar, body, global resets.
+ * Uses puijs design tokens.
+ */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.25);
+  border-radius: 9999px;
+  transition: background-color 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.45);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.25) transparent;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--phi-color-background);
+  color: var(--phi-color-text-primary);
+  min-height: 100vh;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+}
+
+/* Hide sidebar scrollbar */
+.theme-doc-sidebar-container,
+.theme-doc-sidebar-menu,
+[class*="sidebar"],
+[class*="sidebar"] * {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.theme-doc-sidebar-container::-webkit-scrollbar,
+.theme-doc-sidebar-menu::-webkit-scrollbar,
+[class*="sidebar"]::-webkit-scrollbar,
+[class*="sidebar"] *::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+  background: transparent;
+}

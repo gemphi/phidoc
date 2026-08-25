@@ -1,0 +1,25 @@
+.heroBanner {
+  padding: 5rem 0 4rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--phi-color-background) 0%, var(--phi-color-background-secondary) 100%);
+}
+
+.heroTitle {
+  font-size: 3rem;
+  font-weight: var(--phi-font-weight-bold);
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--phi-color-primary) 0%, #818cf8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}

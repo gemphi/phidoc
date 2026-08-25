@@ -1,0 +1,18 @@
+/**
+ * PhiDoc — Global Styles Entry Point
+ *
+ * Styles are split into focused CSS modules using puijs design tokens.
+ * This file imports them in dependency order.
+ */
+
+@import './variables.css';
+@import './base.css';
+@import './navbar.css';
+@import './sidebar.css';
+@import './content.css';
+@import './code.css';
+@import './tables.css';
+@import './components.css';
+@import './toc.css';
+@import './footer.css';
+@import './print.css';
