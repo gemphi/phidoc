@@ -1,25 +1,28 @@
 /**
  * Base styles: scrollbar, body, global resets.
- * Uses puijs design tokens.
+ * Uses puijs design tokens with gradient backgrounds.
+ * PhiDoc is powered by PhiDoc ◂ puijs — Mac look by default.
  */
 
+/* Themed scrollbars — within theme's color shades */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: var(--phi-scrollbar-track);
+  border-radius: var(--phi-radius-full);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(148, 163, 184, 0.25);
-  border-radius: 9999px;
-  transition: background-color 0.2s ease;
+  background: var(--phi-scrollbar-thumb);
+  border-radius: var(--phi-radius-full);
+  transition: background-color var(--phi-transition-normal);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(148, 163, 184, 0.45);
+  background: var(--phi-scrollbar-thumb-hover);
 }
 
 ::-webkit-scrollbar-corner {
@@ -28,19 +31,26 @@
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(148, 163, 184, 0.25) transparent;
+  scrollbar-color: var(--phi-scrollbar-thumb) var(--phi-scrollbar-track);
 }
 
 html, body {
   margin: 0;
   padding: 0;
-  background-color: var(--phi-color-background);
+  background: var(--phi-gradient-main);
+  background-attachment: fixed;
   color: var(--phi-color-text-primary);
   min-height: 100vh;
   font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
 }
 
-/* Hide sidebar scrollbar */
+/* Long content pages use left-to-right gradient */
+.markdown {
+  background: var(--phi-gradient-main-lr);
+  background-attachment: fixed;
+}
+
+/* Sidebar — controllable, with gradient and hidden scrollbar */
 .theme-doc-sidebar-container,
 .theme-doc-sidebar-menu,
 [class*="sidebar"],
@@ -57,4 +67,33 @@ html, body {
   width: 0;
   height: 0;
   background: transparent;
+}
+
+/* Sidebar background gradient */
+.theme-doc-sidebar-container {
+  background: var(--phi-gradient-sidebar);
+}
+
+/* Menu items — breathing space */
+.theme-doc-sidebar-menu .menu__list-item {
+  padding: var(--phi-space-1) var(--phi-space-2);
+  margin: var(--phi-space-1) 0;
+}
+
+.theme-doc-sidebar-menu .menu__link {
+  padding: var(--phi-space-2) var(--phi-space-3);
+  border-radius: var(--phi-radius-md);
+  transition: all var(--phi-transition-normal);
+}
+
+/* Navbar — gradient background with Mac-style translucency */
+.navbar {
+  background: var(--phi-gradient-navbar);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+}
+
+/* Footer — gradient background */
+.footer {
+  background: var(--phi-gradient-footer);
 }

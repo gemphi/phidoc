@@ -46,6 +46,21 @@
   --phi-color-background: #ffffff;
   --phi-color-background-secondary: var(--phi-color-gray-50);
   --phi-color-background-card: #ffffff;
+
+  /* Gradient backgrounds — no flat colors for large surfaces */
+  --phi-gradient-main: linear-gradient(to bottom, #ffffff 0%, #f8fafc 100%);
+  --phi-gradient-main-lr: linear-gradient(to right, #ffffff 0%, #f8fafc 100%);
+  --phi-gradient-secondary: linear-gradient(to bottom, #f8fafc 0%, #f1f5f9 100%);
+  --phi-gradient-card: linear-gradient(to bottom, #ffffff 0%, #fafbff 100%);
+  --phi-gradient-navbar: linear-gradient(to bottom, #ffffff 0%, #f8fafc 100%);
+  --phi-gradient-sidebar: linear-gradient(to right, #f8fafc 0%, #ffffff 100%);
+  --phi-gradient-table-header: linear-gradient(to bottom, #f1f5f9 0%, #e2e8f0 100%);
+  --phi-gradient-table-row-a: linear-gradient(to right, #ffffff 0%, #f8fafc 100%);
+  --phi-gradient-table-row-b: linear-gradient(to right, #f8fafc 0%, #f1f5f9 100%);
+  --phi-gradient-footer: linear-gradient(to bottom, #f8fafc 0%, #f1f5f9 100%);
+  --phi-scrollbar-track: rgba(148, 163, 184, 0.08);
+  --phi-scrollbar-thumb: rgba(148, 163, 184, 0.30);
+  --phi-scrollbar-thumb-hover: rgba(148, 163, 184, 0.50);
   --phi-color-text-primary: var(--phi-color-gray-900);
   --phi-color-text-secondary: var(--phi-color-gray-500);
   --phi-color-text-muted: var(--phi-color-gray-400);
@@ -60,6 +75,7 @@
   --phi-shadow-4: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
 
   --phi-brand-gradient: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+  --phi-gradient-accent: linear-gradient(to right, #eff6ff 0%, #e0e7ff 100%);
 
   --phi-radius-sm: 4px;
   --phi-radius-md: 6px;
@@ -102,9 +118,9 @@
   --ifm-color-primary-lighter: var(--phi-color-primary-light);
   --ifm-color-primary-lightest: var(--phi-color-primary-light);
   --ifm-code-font-size: 95%;
-  --ifm-background-color: var(--phi-color-background);
-  --ifm-navbar-background-color: var(--phi-color-background);
-  --ifm-footer-background-color: var(--phi-color-background-secondary);
+  --ifm-background-color: transparent;
+  --ifm-navbar-background-color: transparent;
+  --ifm-footer-background-color: transparent;
   --ifm-font-family-base: var(--phi-font-family);
   --ifm-font-family-monospace: var(--phi-font-mono);
   --ifm-heading-font-family: var(--phi-font-heading);
@@ -148,6 +164,21 @@
   --phi-color-background: #0f172a;
   --phi-color-background-secondary: #0b1120;
   --phi-color-background-card: #1e293b;
+
+  /* Dark gradient backgrounds — alternating shades of the same palette */
+  --phi-gradient-main: linear-gradient(to bottom, #0f172a 0%, #0b1120 100%);
+  --phi-gradient-main-lr: linear-gradient(to right, #0f172a 0%, #0b1120 100%);
+  --phi-gradient-secondary: linear-gradient(to bottom, #0b1120 0%, #020617 100%);
+  --phi-gradient-card: linear-gradient(to bottom, #1e293b 0%, #0f172a 100%);
+  --phi-gradient-navbar: linear-gradient(to bottom, #0f172a 0%, #0b1120 100%);
+  --phi-gradient-sidebar: linear-gradient(to right, #0b1120 0%, #0f172a 100%);
+  --phi-gradient-table-header: linear-gradient(to bottom, #1e293b 0%, #0f172a 100%);
+  --phi-gradient-table-row-a: linear-gradient(to right, #0f172a 0%, #0b1120 100%);
+  --phi-gradient-table-row-b: linear-gradient(to right, #0b1120 0%, #020617 100%);
+  --phi-gradient-footer: linear-gradient(to bottom, #0b1120 0%, #020617 100%);
+  --phi-scrollbar-track: rgba(148, 163, 184, 0.05);
+  --phi-scrollbar-thumb: rgba(148, 163, 184, 0.20);
+  --phi-scrollbar-thumb-hover: rgba(148, 163, 184, 0.35);
   --phi-color-text-primary: #f8fafc;
   --phi-color-text-secondary: #94a3b8;
   --phi-color-text-muted: #64748b;
@@ -160,6 +191,7 @@
   --phi-shadow-4: 0 20px 25px -5px rgba(0, 0, 0, 0.7);
 
   --phi-brand-gradient: linear-gradient(135deg, #60a5fa 0%, #818cf8 100%);
+  --phi-gradient-accent: linear-gradient(to right, #1e3a8a 0%, #312e81 100%);
 
   --ifm-color-primary: var(--phi-color-primary);
   --ifm-color-primary-dark: var(--phi-color-primary-hover);
@@ -168,8 +200,8 @@
   --ifm-color-primary-light: var(--phi-color-primary-light);
   --ifm-color-primary-lighter: var(--phi-color-primary-light);
   --ifm-color-primary-lightest: var(--phi-color-primary-light);
-  --ifm-background-color: var(--phi-color-background);
-  --ifm-navbar-background-color: var(--phi-color-background);
-  --ifm-footer-background-color: var(--phi-color-background-secondary);
+  --ifm-background-color: transparent;
+  --ifm-navbar-background-color: transparent;
+  --ifm-footer-background-color: transparent;
   --docusaurus-highlighted-code-line-bg: rgba(96, 165, 250, 0.15);
 }

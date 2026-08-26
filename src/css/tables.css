@@ -1,5 +1,6 @@
 /**
- * Tables.
+ * Tables — alternating gradient row backgrounds.
+ * No flat colors; alternating shades of the same gradient palette.
  */
 
 .markdown table,
@@ -14,7 +15,7 @@ table {
 
 .markdown thead tr,
 thead tr {
-  background: var(--phi-color-background-secondary);
+  background: var(--phi-gradient-table-header);
   border-bottom: 1px solid var(--phi-color-border);
 }
 
@@ -30,15 +31,24 @@ th {
   border-bottom: 1px solid var(--phi-color-border);
 }
 
-.markdown tbody tr,
-tbody tr {
+/* Alternating rows — gradient shades, opposite on each layer */
+.markdown tbody tr:nth-child(odd),
+tbody tr:nth-child(odd) {
+  background: var(--phi-gradient-table-row-a);
+  border-bottom: 1px solid var(--phi-color-border-subtle);
+  transition: background var(--phi-transition-fast);
+}
+
+.markdown tbody tr:nth-child(even),
+tbody tr:nth-child(even) {
+  background: var(--phi-gradient-table-row-b);
   border-bottom: 1px solid var(--phi-color-border-subtle);
   transition: background var(--phi-transition-fast);
 }
 
 .markdown tbody tr:hover,
 tbody tr:hover {
-  background: var(--phi-color-background-secondary);
+  background: var(--phi-gradient-accent);
 }
 
 .markdown td,

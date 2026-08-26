@@ -23,7 +23,7 @@
 
 .tabs__item:hover {
   color: var(--phi-color-text-primary);
-  background: var(--phi-color-background-secondary);
+  background: var(--phi-gradient-accent);
 }
 
 .tabs__item--active {
@@ -34,7 +34,7 @@
 
 .alert,
 .admonition {
-  background: var(--phi-color-background-card);
+  background: var(--phi-gradient-card);
   border: 1px solid var(--phi-color-border);
   border-left: 3px solid var(--phi-color-primary);
   border-radius: var(--phi-radius-lg);
@@ -45,7 +45,7 @@
 }
 
 .card {
-  background: var(--phi-color-background-card);
+  background: var(--phi-gradient-card);
   border: 1px solid var(--phi-color-border);
   border-radius: var(--phi-radius-xl);
   box-shadow: var(--phi-shadow-1);

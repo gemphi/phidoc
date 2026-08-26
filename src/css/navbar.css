@@ -3,7 +3,7 @@
  */
 
 .navbar {
-  background: var(--phi-color-background);
+  background: var(--phi-gradient-navbar);
   border-bottom: 1px solid var(--phi-color-border-subtle);
   box-shadow: var(--phi-shadow-1);
   padding: var(--phi-space-2) 0;
@@ -11,9 +11,9 @@
 }
 
 .navbar--scrolled {
-  background: var(--phi-color-background);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: var(--phi-gradient-navbar);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
   box-shadow: var(--phi-shadow-2);
 }
 
@@ -41,7 +41,7 @@
 
 .navbar__link:hover {
   color: var(--phi-color-text-primary);
-  background: var(--phi-color-background-secondary);
+  background: var(--phi-gradient-accent);
 }
 
 .navbar__link--active {

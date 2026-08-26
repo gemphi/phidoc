@@ -3,7 +3,7 @@
  */
 
 .footer {
-  background: var(--phi-color-background-secondary);
+  background: var(--phi-gradient-footer);
   border-top: 1px solid var(--phi-color-border-subtle);
 }
 
