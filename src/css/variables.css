@@ -1,16 +1,22 @@
 /**
  * PhiDoc Design Tokens
- * Inlines puijs --phi-* variables and bridges to Docusaurus --ifm-* overrides.
- * Source: @phiace/puijs/src/tokens/_variables.scss and _dark.scss
+ *
+ * Structural tokens (spacing, radius, shadows, fonts, gray scale,
+ * surface gradients) are defined here.
+ *
+ * Brand color tokens (--phi-color-primary, --phi-brand-gradient, etc.)
+ * are NOT hardcoded here — they are injected at runtime by
+ * BrandProvider from the 16 puijs BRAND_THEMES.
+ * See: src/theme/BrandProvider.tsx
  */
 
 :root {
-  /* PUIjs Light Theme Tokens */
-  --phi-color-primary: #3b82f6;
-  --phi-color-primary-hover: #2563eb;
+  /* Brand color tokens — fallbacks only (edX Paragon).
+     BrandProvider overrides these from puijs BRAND_THEMES. */
+  --phi-color-primary: #00262b;
+  --phi-color-primary-hover: #00525d;
   --phi-color-primary-light: #eff6ff;
-  --phi-color-primary-dark: #1d4ed8;
-
+  --phi-color-primary-dark: #1e3a8a;
   --phi-color-secondary: #475569;
   --phi-color-secondary-hover: #334155;
   --phi-color-secondary-light: #f1f5f9;
@@ -74,7 +80,9 @@
   --phi-shadow-3: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
   --phi-shadow-4: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
 
-  --phi-brand-gradient: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+  /* Brand gradient — fallback only, injected by BrandProvider */
+  --phi-brand-gradient: linear-gradient(135deg, #00262b 0%, #007382 100%);
+  --phi-brand-gradient-dark: linear-gradient(135deg, #00262b 0%, #001518 100%);
   --phi-gradient-accent: linear-gradient(to right, #eff6ff 0%, #e0e7ff 100%);
 
   --phi-radius-sm: 4px;
@@ -130,12 +138,11 @@
 }
 
 [data-theme='dark'] {
-  /* PUIjs Dark Theme Tokens */
+  /* Brand tokens — dark fallbacks (BrandProvider injects real values) */
   --phi-color-primary: #60a5fa;
   --phi-color-primary-hover: #3b82f6;
   --phi-color-primary-light: #1e3a8a;
   --phi-color-primary-dark: #93c5fd;
-
   --phi-color-secondary: #94a3b8;
   --phi-color-secondary-hover: #cbd5e1;
   --phi-color-secondary-light: #1e293b;
@@ -190,7 +197,9 @@
   --phi-shadow-3: 0 10px 15px -3px rgba(0, 0, 0, 0.6);
   --phi-shadow-4: 0 20px 25px -5px rgba(0, 0, 0, 0.7);
 
+  /* Brand gradient — dark fallback, injected by BrandProvider */
   --phi-brand-gradient: linear-gradient(135deg, #60a5fa 0%, #818cf8 100%);
+  --phi-brand-gradient-dark: linear-gradient(135deg, #60a5fa 0%, #312e81 100%);
   --phi-gradient-accent: linear-gradient(to right, #1e3a8a 0%, #312e81 100%);
 
   --ifm-color-primary: var(--phi-color-primary);

@@ -1,16 +1,29 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import {BRAND_THEME_DATA} from './brandData';
 
 const config: Config = {
   title: 'PhiDoc',
   tagline: 'Unified documentation for the gemphi workspace',
   favicon: 'img/favicon.ico',
 
-  url: 'https://gemphi.dev',
+  url: 'https://phidoc.dev',
   baseUrl: '/',
 
   onBrokenLinks: 'warn',
+  onBrokenMarkdownLinks: 'warn',
+
+  headTags: [
+    { tagName: 'meta', attributes: { name: 'description', content: 'Unified documentation for the gemphi workspace — powered by puijs with 16 brand themes.' } },
+    { tagName: 'meta', attributes: { property: 'og:title', content: 'PhiDoc' } },
+    { tagName: 'meta', attributes: { property: 'og:description', content: 'Unified documentation for the gemphi workspace' } },
+    { tagName: 'meta', attributes: { property: 'og:url', content: 'https://phidoc.dev' } },
+    { tagName: 'meta', attributes: { property: 'og:type', content: 'website' } },
+    { tagName: 'meta', attributes: { name: 'twitter:card', content: 'summary_large_image' } },
+    { tagName: 'meta', attributes: { name: 'twitter:title', content: 'PhiDoc' } },
+    { tagName: 'meta', attributes: { name: 'twitter:description', content: 'Unified documentation for the gemphi workspace' } },
+  ],
   markdown: {
     hooks: {
       onBrokenMarkdownLinks: 'warn',
@@ -38,9 +51,20 @@ const config: Config = {
     ],
   ],
 
-  plugins: ['docusaurus-plugin-sass'],
+  plugins: [
+    'docusaurus-plugin-sass',
+    '@easyops-cn/docusaurus-search-local',
+  ],
 
   themeConfig: {
+    colorMode: {
+      defaultMode: 'light',
+      disableSwitch: false,
+      respectPrefersColorScheme: true,
+    },
+    metadata: [
+      { name: 'description', content: 'Unified documentation for the gemphi workspace — powered by puijs with 16 brand themes.' },
+    ],
     navbar: {
       title: 'PhiDoc',
       logo: {
@@ -65,6 +89,15 @@ const config: Config = {
           sidebarId: 'sharedSidebar',
           position: 'left',
           label: 'Shared',
+        },
+        {
+          type: 'dropdown',
+          label: 'Brand Theme',
+          position: 'right',
+          items: BRAND_THEME_DATA.map((brand) => ({
+            label: brand.name,
+            href: `/?brand=${brand.id}`,
+          })),
         },
         {
           href: 'https://github.com/gemphi',
@@ -103,7 +136,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} gemphi. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} PhiDoc. Powered by puijs.`,
     },
     prism: {
       theme: prismThemes.github,

@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import React from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
+import { usePuiTheme } from '@phiace/puijs';
+import { SITE_CONFIG } from '../data/siteConfig';
 import {
   Container,
   Grid,
@@ -14,9 +15,7 @@ import {
   Button,
   Title,
   Text,
-  PuiProvider,
   BRAND_THEMES,
-  BrandTheme,
 } from '@phiace/puijs';
 
 interface ProjectDoc {
@@ -63,58 +62,63 @@ const PROJECT_REGISTRY: ProjectDoc[] = [
   },
 ];
 
-export default function Home(): JSX.Element {
-  const { siteConfig } = useDocusaurusContext();
-  const [selectedBrand, setSelectedBrand] = useState<string>('edx');
-
-  const activeTheme = BRAND_THEMES.find((t) => t.id === selectedBrand) || BRAND_THEMES[0];
+/** Brand selector bar — uses puijs usePuiTheme context. */
+function BrandSelectorBar() {
+  const { brandId, setBrandId } = usePuiTheme();
 
   return (
-    <PuiProvider theme={activeTheme.id as any}>
-      <Layout description="Unified documentation for the gemphi workspace">
-        <header
-          style={{
-            background: activeTheme.gradient,
-            color: '#ffffff',
-            padding: '4rem 1rem',
-            textAlign: 'center',
-          }}
-        >
-          <Container size="lg">
-            <Stack direction="column" align="center" gap={4}>
-              <Title level={1} style={{ color: '#ffffff', margin: 0, fontSize: '3rem' }}>
-                {siteConfig.title}
-              </Title>
-              <Text size="lg" style={{ color: '#f8fafc', maxWidth: '680px', margin: '0 auto' }}>
-                {siteConfig.tagline}
-              </Text>
+    <Stack direction="column" align="center" gap={2} style={{ marginTop: '1.5rem' }}>
+      <Text size="sm" style={{ color: '#e2e8f0', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+        Active Brand Theme ({BRAND_THEMES.length} puijs Brands):
+      </Text>
+      <Stack direction="row" justify="center" gap={2} wrap>
+        {BRAND_THEMES.map((theme) => (
+          <Button
+            key={theme.id}
+            size="sm"
+            variant={brandId === theme.id ? 'primary' : 'outline'}
+            onClick={() => setBrandId(theme.id)}
+            style={{
+              borderColor: brandId === theme.id ? '#ffffff' : 'rgba(255,255,255,0.3)',
+              color: '#ffffff',
+              backgroundColor: brandId === theme.id ? 'rgba(255,255,255,0.25)' : 'transparent',
+            }}
+          >
+            {theme.name}
+          </Button>
+        ))}
+      </Stack>
+    </Stack>
+  );
+}
 
-              {/* 16-Brand Theme Selector Bar */}
-              <Stack direction="column" align="center" gap={2} style={{ marginTop: '1.5rem' }}>
-                <Text size="sm" style={{ color: '#e2e8f0', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                  Active Brand Theme ({BRAND_THEMES.length} Paragon Brands):
-                </Text>
-                <Stack direction="row" justify="center" gap={2} wrap>
-                  {BRAND_THEMES.map((theme: BrandTheme) => (
-                    <Button
-                      key={theme.id}
-                      size="sm"
-                      variant={selectedBrand === theme.id ? 'primary' : 'outline'}
-                      onClick={() => setSelectedBrand(theme.id)}
-                      style={{
-                        borderColor: selectedBrand === theme.id ? '#ffffff' : 'rgba(255,255,255,0.3)',
-                        color: '#ffffff',
-                        backgroundColor: selectedBrand === theme.id ? 'rgba(255,255,255,0.25)' : 'transparent',
-                      }}
-                    >
-                      {theme.name}
-                    </Button>
-                  ))}
-                </Stack>
-              </Stack>
-            </Stack>
-          </Container>
-        </header>
+export default function Home(): JSX.Element {
+  const urlBrand = typeof window !== 'undefined'
+    ? new URLSearchParams(window.location.search).get('brand') || SITE_CONFIG.defaultBrandId
+    : SITE_CONFIG.defaultBrandId;
+
+  return (
+    <Layout description={SITE_CONFIG.tagline}>
+      <header
+        style={{
+          background: 'var(--phi-brand-gradient)',
+          color: '#ffffff',
+          padding: '4rem 1rem',
+          textAlign: 'center',
+        }}
+      >
+        <Container size="lg">
+          <Stack direction="column" align="center" gap={4}>
+            <Title level={1} style={{ color: '#ffffff', margin: 0, fontSize: '3rem' }}>
+              {SITE_CONFIG.title}
+            </Title>
+            <Text size="lg" style={{ color: '#f8fafc', maxWidth: '680px', margin: '0 auto' }}>
+              {SITE_CONFIG.tagline}
+            </Text>
+            <BrandSelectorBar />
+          </Stack>
+        </Container>
+      </header>
 
         <main style={{ padding: '3.5rem 0', background: 'var(--ifm-background-color)' }}>
           <Container size="lg">
@@ -161,6 +165,5 @@ export default function Home(): JSX.Element {
           </Container>
         </main>
       </Layout>
-    </PuiProvider>
   );
 }
