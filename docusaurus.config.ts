@@ -38,6 +38,8 @@ const config: Config = {
     ],
   ],
 
+  plugins: ['docusaurus-plugin-sass'],
+
   themeConfig: {
     navbar: {
       title: 'PhiDoc',
