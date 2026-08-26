@@ -7,12 +7,10 @@
  * Brand color tokens (--phi-color-primary, --phi-brand-gradient, etc.)
  * are NOT hardcoded here — they are injected at runtime by
  * BrandProvider from the 16 puijs BRAND_THEMES.
- * See: src/theme/BrandProvider.tsx
  */
 
 :root {
-  /* Brand color tokens — fallbacks only (edX Paragon).
-     BrandProvider overrides these from puijs BRAND_THEMES. */
+  /* Brand color tokens — fallbacks (edX Paragon) */
   --phi-color-primary: #00262b;
   --phi-color-primary-hover: #00525d;
   --phi-color-primary-light: #eff6ff;
@@ -53,7 +51,7 @@
   --phi-color-background-secondary: var(--phi-color-gray-50);
   --phi-color-background-card: #ffffff;
 
-  /* Gradient backgrounds — no flat colors for large surfaces */
+  /* Gradient backgrounds */
   --phi-gradient-main: linear-gradient(to bottom, #ffffff 0%, #f8fafc 100%);
   --phi-gradient-main-lr: linear-gradient(to right, #ffffff 0%, #f8fafc 100%);
   --phi-gradient-secondary: linear-gradient(to bottom, #f8fafc 0%, #f1f5f9 100%);
@@ -67,28 +65,31 @@
   --phi-scrollbar-track: rgba(148, 163, 184, 0.08);
   --phi-scrollbar-thumb: rgba(148, 163, 184, 0.30);
   --phi-scrollbar-thumb-hover: rgba(148, 163, 184, 0.50);
+
   --phi-color-text-primary: var(--phi-color-gray-900);
-  --phi-color-text-secondary: var(--phi-color-gray-500);
+  --phi-color-text-secondary: var(--phi-color-gray-600);
   --phi-color-text-muted: var(--phi-color-gray-400);
   --phi-color-text-inverse: #ffffff;
   --phi-color-border: var(--phi-color-gray-200);
   --phi-color-border-subtle: var(--phi-color-gray-100);
 
   --phi-shadow-0: none;
-  --phi-shadow-1: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
-  --phi-shadow-2: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-  --phi-shadow-3: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-  --phi-shadow-4: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  --phi-shadow-1: 0 1px 3px 0 rgba(0, 0, 0, 0.06), 0 1px 2px -1px rgba(0, 0, 0, 0.06);
+  --phi-shadow-2: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+  --phi-shadow-3: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+  --phi-shadow-4: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
 
-  /* Brand gradient — fallback only, injected by BrandProvider */
   --phi-brand-gradient: linear-gradient(135deg, #00262b 0%, #007382 100%);
   --phi-brand-gradient-dark: linear-gradient(135deg, #00262b 0%, #001518 100%);
   --phi-gradient-accent: linear-gradient(to right, #eff6ff 0%, #e0e7ff 100%);
 
-  --phi-radius-sm: 4px;
-  --phi-radius-md: 6px;
-  --phi-radius-lg: 8px;
+  /* Rounded geometry across all elements */
+  --phi-radius-xs: 4px;
+  --phi-radius-sm: 6px;
+  --phi-radius-md: 8px;
+  --phi-radius-lg: 10px;
   --phi-radius-xl: 12px;
+  --phi-radius-2xl: 16px;
   --phi-radius-full: 9999px;
 
   --phi-space-1: 4px;
@@ -99,23 +100,25 @@
   --phi-space-6: 32px;
   --phi-space-8: 48px;
 
-  --phi-transition-fast: 0.1s ease;
+  --phi-transition-fast: 0.12s ease;
   --phi-transition-normal: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 
-  --phi-font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
-  --phi-font-heading: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Refined, sleek typography (not heavy/thick) */
+  --phi-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", "Helvetica Neue", sans-serif;
+  --phi-font-heading: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", sans-serif;
   --phi-font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', 'Consolas', monospace;
 
   --phi-font-size-xs: 0.75rem;
   --phi-font-size-sm: 0.8125rem;
   --phi-font-size-base: 0.875rem;
-  --phi-font-size-lg: 1rem;
-  --phi-font-size-xl: 1.125rem;
+  --phi-font-size-lg: 0.9375rem;
+  --phi-font-size-xl: 1.0625rem;
 
+  --phi-font-weight-light: 300;
   --phi-font-weight-normal: 400;
   --phi-font-weight-medium: 500;
-  --phi-font-weight-semibold: 600;
-  --phi-font-weight-bold: 700;
+  --phi-font-weight-semibold: 550;
+  --phi-font-weight-bold: 600;
 
   /* Docusaurus overrides */
   --ifm-color-primary: var(--phi-color-primary);
@@ -125,20 +128,22 @@
   --ifm-color-primary-light: var(--phi-color-primary-light);
   --ifm-color-primary-lighter: var(--phi-color-primary-light);
   --ifm-color-primary-lightest: var(--phi-color-primary-light);
-  --ifm-code-font-size: 95%;
+  --ifm-code-font-size: 92%;
   --ifm-background-color: transparent;
   --ifm-navbar-background-color: transparent;
   --ifm-footer-background-color: transparent;
   --ifm-font-family-base: var(--phi-font-family);
   --ifm-font-family-monospace: var(--phi-font-mono);
   --ifm-heading-font-family: var(--phi-font-heading);
-  --ifm-heading-font-weight: var(--phi-font-weight-bold);
-  --ifm-line-height-base: 1.65;
-  --docusaurus-highlighted-code-line-bg: rgba(59, 130, 246, 0.1);
+  --ifm-heading-font-weight: 550;
+  --ifm-font-weight-base: 400;
+  --ifm-button-border-radius: var(--phi-radius-md);
+  --ifm-card-border-radius: var(--phi-radius-xl);
+  --ifm-line-height-base: 1.6;
+  --docusaurus-highlighted-code-line-bg: rgba(59, 130, 246, 0.08);
 }
 
 [data-theme='dark'] {
-  /* Brand tokens — dark fallbacks (BrandProvider injects real values) */
   --phi-color-primary: #60a5fa;
   --phi-color-primary-hover: #3b82f6;
   --phi-color-primary-light: #1e3a8a;
@@ -159,58 +164,26 @@
   --phi-color-gray-900: #f1f5f9;
   --phi-color-gray-950: #f8fafc;
 
-  --phi-color-success: #34d399;
-  --phi-color-success-light: #064e3b;
-  --phi-color-warning: #fbbf24;
-  --phi-color-warning-light: #78350f;
-  --phi-color-error: #f87171;
-  --phi-color-error-light: #450a0a;
-  --phi-color-info: #38bdf8;
-  --phi-color-info-light: #082f49;
+  --phi-color-background: #020617;
+  --phi-color-background-secondary: #0f172a;
+  --phi-color-background-card: #0f172a;
 
-  --phi-color-background: #0f172a;
-  --phi-color-background-secondary: #0b1120;
-  --phi-color-background-card: #1e293b;
-
-  /* Dark gradient backgrounds — alternating shades of the same palette */
-  --phi-gradient-main: linear-gradient(to bottom, #0f172a 0%, #0b1120 100%);
-  --phi-gradient-main-lr: linear-gradient(to right, #0f172a 0%, #0b1120 100%);
-  --phi-gradient-secondary: linear-gradient(to bottom, #0b1120 0%, #020617 100%);
-  --phi-gradient-card: linear-gradient(to bottom, #1e293b 0%, #0f172a 100%);
-  --phi-gradient-navbar: linear-gradient(to bottom, #0f172a 0%, #0b1120 100%);
-  --phi-gradient-sidebar: linear-gradient(to right, #0b1120 0%, #0f172a 100%);
+  --phi-gradient-main: linear-gradient(to bottom, #020617 0%, #0f172a 100%);
+  --phi-gradient-main-lr: linear-gradient(to right, #020617 0%, #0f172a 100%);
+  --phi-gradient-secondary: linear-gradient(to bottom, #0f172a 0%, #1e293b 100%);
+  --phi-gradient-card: linear-gradient(to bottom, #0f172a 0%, #1e293b 100%);
+  --phi-gradient-navbar: linear-gradient(to bottom, #020617 0%, #0f172a 100%);
+  --phi-gradient-sidebar: linear-gradient(to right, #020617 0%, #0f172a 100%);
   --phi-gradient-table-header: linear-gradient(to bottom, #1e293b 0%, #0f172a 100%);
-  --phi-gradient-table-row-a: linear-gradient(to right, #0f172a 0%, #0b1120 100%);
-  --phi-gradient-table-row-b: linear-gradient(to right, #0b1120 0%, #020617 100%);
-  --phi-gradient-footer: linear-gradient(to bottom, #0b1120 0%, #020617 100%);
-  --phi-scrollbar-track: rgba(148, 163, 184, 0.05);
-  --phi-scrollbar-thumb: rgba(148, 163, 184, 0.20);
-  --phi-scrollbar-thumb-hover: rgba(148, 163, 184, 0.35);
+  --phi-gradient-table-row-a: linear-gradient(to right, #0f172a 0%, #1e293b 100%);
+  --phi-gradient-table-row-b: linear-gradient(to right, #1e293b 0%, #0f172a 100%);
+  --phi-gradient-footer: linear-gradient(to bottom, #0f172a 0%, #020617 100%);
+
   --phi-color-text-primary: #f8fafc;
   --phi-color-text-secondary: #94a3b8;
   --phi-color-text-muted: #64748b;
-  --phi-color-border: #334155;
-  --phi-color-border-subtle: #1e293b;
-
-  --phi-shadow-1: 0 1px 3px 0 rgba(0, 0, 0, 0.4);
-  --phi-shadow-2: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
-  --phi-shadow-3: 0 10px 15px -3px rgba(0, 0, 0, 0.6);
-  --phi-shadow-4: 0 20px 25px -5px rgba(0, 0, 0, 0.7);
-
-  /* Brand gradient — dark fallback, injected by BrandProvider */
-  --phi-brand-gradient: linear-gradient(135deg, #60a5fa 0%, #818cf8 100%);
-  --phi-brand-gradient-dark: linear-gradient(135deg, #60a5fa 0%, #312e81 100%);
-  --phi-gradient-accent: linear-gradient(to right, #1e3a8a 0%, #312e81 100%);
-
-  --ifm-color-primary: var(--phi-color-primary);
-  --ifm-color-primary-dark: var(--phi-color-primary-hover);
-  --ifm-color-primary-darker: var(--phi-color-primary-dark);
-  --ifm-color-primary-darkest: var(--phi-color-primary-dark);
-  --ifm-color-primary-light: var(--phi-color-primary-light);
-  --ifm-color-primary-lighter: var(--phi-color-primary-light);
-  --ifm-color-primary-lightest: var(--phi-color-primary-light);
-  --ifm-background-color: transparent;
-  --ifm-navbar-background-color: transparent;
-  --ifm-footer-background-color: transparent;
-  --docusaurus-highlighted-code-line-bg: rgba(96, 165, 250, 0.15);
+  --phi-color-text-inverse: #0f172a;
+  --phi-color-border: #1e293b;
+  --phi-color-border-subtle: #0f172a;
+  --phi-gradient-accent: linear-gradient(to right, #1e293b 0%, #0f172a 100%);
 }

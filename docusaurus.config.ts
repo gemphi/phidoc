@@ -42,6 +42,8 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
           editUrl: 'https://github.com/gemphi/phidoc/edit/main/',
+          sidebarCollapsed: true,
+          sidebarCollapsible: true,
         },
         blog: false,
         theme: {
@@ -53,10 +55,15 @@ const config: Config = {
 
   plugins: [
     'docusaurus-plugin-sass',
-    '@easyops-cn/docusaurus-search-local',
   ],
 
   themeConfig: {
+    docs: {
+      sidebar: {
+        hideable: true,
+        autoCollapseCategories: true,
+      },
+    },
     colorMode: {
       defaultMode: 'light',
       disableSwitch: false,
@@ -127,6 +134,19 @@ const config: Config = {
           ],
         },
         {
+          title: 'Ecosystem',
+          items: [
+            {
+              label: 'PUI.js Design System',
+              to: '/docs/shared/diem-standards',
+            },
+            {
+              label: 'Paragon 16 Brands',
+              to: '/docs/shared/readme-format',
+            },
+          ],
+        },
+        {
           title: 'Community',
           items: [
             {
@@ -136,7 +156,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} PhiDoc. Powered by puijs.`,
+      copyright: `Copyright © ${new Date().getFullYear()} GemPhi. Powered by PUI.js with 16 Paragon Brands.`,
     },
     prism: {
       theme: prismThemes.github,

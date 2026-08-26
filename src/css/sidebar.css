@@ -1,37 +1,34 @@
 /**
- * Sidebar: menu, carets, dropdowns.
+ * Sidebar: collapsible menu, chevrons, rounded active items, closable sidebar.
  */
 
 .theme-doc-sidebar-container {
   background: var(--phi-gradient-sidebar);
   border-right: 1px solid var(--phi-color-border-subtle);
-  padding-top: var(--phi-space-3);
+  padding-top: var(--phi-space-2);
+}
+
+/* Sidebar collapse/expand button (closable sidebar) */
+.collapseSidebarButton {
+  border-radius: var(--phi-radius-md) !important;
+  background: var(--phi-color-background-card) !important;
+  border: 1px solid var(--phi-color-border) !important;
+  color: var(--phi-color-text-secondary) !important;
+  margin: var(--phi-space-2);
+  transition: all var(--phi-transition-fast);
+
+  &:hover {
+    background: var(--phi-gradient-accent) !important;
+    color: var(--phi-color-primary) !important;
+    border-color: var(--phi-color-primary) !important;
+  }
 }
 
 .menu__caret:before,
-.menu__link--sublist-caret:after,
-.dropdown__menu:after {
+.menu__link--sublist-caret:after {
   filter: brightness(0) saturate(100%) invert(60%) sepia(10%) saturate(500%) hue-rotate(180deg);
-  transform: scale(0.7);
-}
-
-.dropdown__menu {
-  background: var(--phi-gradient-card);
-  border: 1px solid var(--phi-color-border);
-  border-radius: var(--phi-radius-lg);
-  box-shadow: var(--phi-shadow-3);
-  padding: var(--phi-space-2);
-}
-
-.dropdown__link {
-  color: var(--phi-color-text-secondary);
-  border-radius: var(--phi-radius-md);
-  padding: var(--phi-space-2) var(--phi-space-3);
-}
-
-.dropdown__link:hover {
-  color: var(--phi-color-text-primary);
-  background: var(--phi-gradient-accent);
+  transform: scale(0.65);
+  transition: transform var(--phi-transition-fast);
 }
 
 .menu__list {
@@ -46,11 +43,14 @@
 
 .menu__link {
   border-radius: var(--phi-radius-md);
-  font-weight: var(--phi-font-weight-normal);
+  font-weight: 450;
   font-size: var(--phi-font-size-sm);
   color: var(--phi-color-text-secondary);
-  padding: var(--phi-space-2) var(--phi-space-3);
+  padding: 6px 12px;
   transition: all var(--phi-transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .menu__link:hover {
@@ -61,7 +61,7 @@
 .menu__link--active {
   color: var(--phi-color-primary);
   background: var(--phi-gradient-accent);
-  font-weight: var(--phi-font-weight-semibold);
+  font-weight: 550;
 }
 
 .menu__list .menu__list .menu__link--active {

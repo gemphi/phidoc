@@ -1,13 +1,13 @@
 /**
- * Base styles: scrollbar, body, global resets.
+ * Base styles: typography smoothing, scrollbar, body, global resets.
  * Uses puijs design tokens with gradient backgrounds.
- * PhiDoc is powered by PhiDoc ◂ puijs — Mac look by default.
+ * Unified rounded site geometry across all surfaces.
  */
 
-/* Themed scrollbars — within theme's color shades */
+/* Themed scrollbars */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -41,22 +41,35 @@ html, body {
   background-attachment: fixed;
   color: var(--phi-color-text-primary);
   min-height: 100vh;
-  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  font-family: var(--phi-font-family);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Consistent button styling across header, hero, cards, and body */
+button,
+.button,
+a.button,
+[class*="button"] {
+  border-radius: var(--phi-radius-md) !important;
+  font-weight: 500 !important;
+  font-family: var(--phi-font-family);
+  transition: all var(--phi-transition-fast);
+  -webkit-font-smoothing: antialiased;
 }
 
 /* Long content pages use left-to-right gradient */
 .markdown {
   background: var(--phi-gradient-main-lr);
   background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Sidebar — controllable, with gradient and hidden scrollbar */
-.theme-doc-sidebar-container,
-.theme-doc-sidebar-menu,
-[class*="sidebar"],
-[class*="sidebar"] * {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+/* Sidebar background gradient & hidden scrollbar */
+.theme-doc-sidebar-container {
+  background: var(--phi-gradient-sidebar);
 }
 
 .theme-doc-sidebar-container::-webkit-scrollbar,
@@ -69,11 +82,6 @@ html, body {
   background: transparent;
 }
 
-/* Sidebar background gradient */
-.theme-doc-sidebar-container {
-  background: var(--phi-gradient-sidebar);
-}
-
 /* Menu items — breathing space */
 .theme-doc-sidebar-menu .menu__list-item {
   padding: var(--phi-space-1) var(--phi-space-2);
@@ -83,10 +91,11 @@ html, body {
 .theme-doc-sidebar-menu .menu__link {
   padding: var(--phi-space-2) var(--phi-space-3);
   border-radius: var(--phi-radius-md);
+  font-weight: 450;
   transition: all var(--phi-transition-normal);
 }
 
-/* Navbar — gradient background with Mac-style translucency */
+/* Navbar — gradient background with subtle translucency */
 .navbar {
   background: var(--phi-gradient-navbar);
   backdrop-filter: saturate(180%) blur(20px);
