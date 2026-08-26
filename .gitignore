@@ -1,6 +1,9 @@
+# Dependencies
+node_modules/
+package-lock.json
+
 # Build artifacts
 /build
-/node_modules
 /.docusaurus
 /.cache-loader
 
