@@ -1,17 +1,22 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@docusaurus/*": ["node_modules/@docusaurus/*"]
-    },
-    "jsx": "react-jsx",
-    "esModuleInterop": true,
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "allowJs": false,
     "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "strict": true,
-    "moduleResolution": "bundler",
+    "forceConsistentCasingInFileNames": true,
     "module": "ESNext",
-    "target": "ESNext"
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "types": ["vite/client", "node"]
   },
-  "include": ["src/**/*", "*.ts"],
-  "exclude": ["node_modules", "build"]
+  "include": ["src", "vite.config.ts", "phidoc.config.ts"],
+  "exclude": ["node_modules", "dist", "build", ".docusaurus"]
 }

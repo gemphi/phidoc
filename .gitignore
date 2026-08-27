@@ -4,7 +4,6 @@ package-lock.json
 
 # Build artifacts
 /build
-/.docusaurus
 /.cache-loader
 
 # Misc

@@ -1,65 +1,92 @@
 # PhiDoc
 
-Unified documentation portal for the gemphi workspace - covering [Phi](https://github.com/gemphi/phi) (Rust + Apple SDKs + ML) and [Phixum](https://github.com/gemphi/phixum) (Rust options trading engine).
+PhiDoc is a standalone, configuration-driven documentation engine for the GemPhi workspace. It uses puijs for every layout, navigation, typography, card, theme, and responsive behavior.
 
-## Quick Start
+## Run this site
 
 ```bash
 npm install
-npm start
+npm run dev
 ```
 
-This opens the dev server at `http://localhost:3000`.
+The development server runs at `http://127.0.0.1:5174`.
 
 ## Build
 
 ```bash
 npm run build
+npm run preview
 ```
 
-Outputs static files to `build/` - deploy to any static host (Vercel, Netlify, GitHub Pages).
+The production output is written to `dist/` and can be deployed by any static host with SPA path rewrites.
 
-## Structure
+## Architecture
 
 ```
 phidoc/
-├── docusaurus.config.ts   # Site configuration
-├── sidebars.ts            # Sidebar navigation
-├── docs/                  # Documentation content
+├── phidoc.config.ts       # Site metadata, docs path, landing page, nav, sidebar mode
+├── vite.config.ts         # Vite + React + PhiDoc content plugin
+├── docs/                  # Markdown and MDX content
+│   ├── phidoc/            # PhiDoc engine documentation
 │   ├── phi/               # Phi workspace docs
-│   │   ├── intro.md
-│   │   ├── crates/        # Crate-level docs
-│   │   ├── sdk/           # Apple SDK reference
-│   │   └── architecture/  # Architecture docs
-│   ├── phixum/            # Phixum trading engine docs
-│   │   ├── intro.md
-│   │   ├── architecture/  # Architecture & concurrency
-│   │   ├── crates/        # Crate-level docs
-│   │   ├── flows/         # Operational flow docs
-│   │   └── infra/         # Infrastructure & CI/CD
-│   └── shared/            # Cross-workspace standards
-├── src/
-│   ├── pages/             # React landing page
-│   └── css/               # Custom theme styles (SCSS modules)
-├── static/                # Static assets (logo, favicon)
-├── package.json
-└── tsconfig.json
+│   ├── phixum/            # Phixum docs
+│   └── shared/            # Shared standards
+└── src/
+    ├── engine/            # Standalone PhiDoc engine and Vite plugin
+    └── main.tsx           # Virtual content module -> PhiDocSite
 ```
 
-## Tech Stack
+## Add documentation
 
-- **Docusaurus 3** - React-based static site generator
-- **TypeScript** - Type-safe config and components
-- **PUI.js** - Design token system (`@phiace/puijs`)
-- **Sass/SCSS** - Modular stylesheets using puijs tokens
-- **Prism** - Syntax highlighting (Rust, TOML, Bash, JSON, YAML)
-- **MDX** - Markdown with React components
+1. Add a Markdown file under `docs/`.
+2. Use the directory name for the sidebar category.
+3. Add frontmatter only when the route, title, order, visibility, or summary needs explicit control.
+4. Run `npm run dev`; no sidebar file or page component is required.
 
-## Adding Documentation
+## Use PhiDoc in any site
 
-1. Create a `.md` file under `docs/phi/`, `docs/phixum/`, or `docs/shared/`
-2. Add the doc ID to `sidebars.ts`
-3. Run `npm start` to preview
+```ts
+// phidoc.config.ts
+import { definePhiDocConfig } from '@phiace/phidoc';
+
+export default definePhiDocConfig({
+  title: 'Phixum',
+  description: 'Phixum documentation.',
+  brandId: 'phixum',
+  docs: {
+    path: 'docs',
+    routeBasePath: 'docs',
+  },
+  sidebar: {
+    mode: 'auto',
+  },
+});
+```
+
+```ts
+// vite.config.ts
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import phidoc from '@phiace/phidoc/vite';
+import siteConfig from './phidoc.config';
+
+export default defineConfig({
+  plugins: [react(), phidoc(siteConfig)],
+});
+```
+
+```tsx
+// src/main.tsx
+import docsData from 'virtual:phidoc/content';
+import { PhiDocSite } from '@phiace/phidoc';
+import '@phiace/puijs/styles';
+
+export function App() {
+  return <PhiDocSite data={docsData} />;
+}
+```
+
+PhiDoc generates the landing page, content routes, sidebars, previous/next links, active document state, and puijs theme from the config and content tree.
 
 ## License
 
