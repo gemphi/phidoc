@@ -77,6 +77,10 @@ function stripOrderPrefix(value: string): string {
   return value.replace(/^\d+[-_.]/, '');
 }
 
+function kebab(value: string): string {
+  return value.replace(/[_\s]+/g, '-').toLowerCase();
+}
+
 function titleCase(value: string): string {
   return stripOrderPrefix(value)
     .replace(/[-_]+/g, ' ')
@@ -87,7 +91,7 @@ function defaultSlug(relativeFile: string, routeBasePath: string): string {
   const segments = normalizeSlashes(relativeFile)
     .replace(/\.(md|mdx)$/i, '')
     .split('/')
-    .map(stripOrderPrefix)
+    .map((segment) => kebab(stripOrderPrefix(segment)))
     .filter(Boolean);
 
   if (segments[segments.length - 1]?.toLowerCase() === 'index') segments.pop();
